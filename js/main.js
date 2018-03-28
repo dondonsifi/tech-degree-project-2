@@ -5,7 +5,7 @@ const $ul=$pagination.firstElementChild;
 const $pageHeader = document.querySelector(".page-header");
 let matched = []; //initial search result
 let clickPage = 1; //initial default  page
-let studentsPerPage = 2;//initial numbers of students show in one page
+let studentsPerPage = 10;//initial numbers of students show in one page
 let initialPage = 1;
 let numberOfPage = Math.ceil($studentList.length/studentsPerPage);// caluate numbers of pages when load the page first time.
 
