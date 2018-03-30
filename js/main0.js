@@ -1,16 +1,9 @@
 
 const $studentList = document.querySelectorAll(".student-item");
 const $studentPage = document.querySelector(".page");
-
-//pagelink elements
-const $page = document.querySelector(".page");
-const $pagelinkDiv = document.createElement("div");
-$pagelinkDiv.className = "pagination";
-const $pagelinkUl = document.createElement("ul");
-$page.append($pagelinkDiv);
-$pagelinkDiv.append($pagelinkUl);
 const $pagination = document.querySelector(".pagination");
-
+const $ul=$pagination.firstElementChild;
+const $pageHeader = document.querySelector(".page-header");
 let matched = []; //initial search result
 let clickPage = 1; //initial default  page
 let studentsPerPage = 10;//initial numbers of students show in one page
@@ -39,18 +32,16 @@ appendPageLink(numberOfPage);
 })
 
 //search function and create elements
-const $pageHeader = document.querySelector(".page-header");
-
 const $searchDiv = document.createElement("div");
-$searchDiv.className = "student-search";
-$pageHeader.append($searchDiv);
-
+  $searchDiv.className = "student-search";
 const $searchInput = document.createElement("input");
-$searchInput.placeholder="search for students...";
-$searchDiv.append($searchInput);
-
+  $searchInput.type = "text";
+  $searchInput.id = "search";
+  $searchInput.placeholder = "search for students.....";
 const $searchButton = document.createElement("button");
-$searchButton.textContent = "Search";
+  $searchButton.textContent  = "Search";
+$pageHeader.append($searchDiv);
+$searchDiv.append($searchInput);
 $searchDiv.append($searchButton);
 
 //search event
@@ -117,8 +108,6 @@ function showStudents (pageNumber,maxStudentsToDisplay){
 }
 //append pagelink function
 //pass (pageN (total pages) to appendPageLink function
-
-
 function appendPageLink(pageN){
   for (let i=1; i<=pageN; i++){
 
@@ -129,7 +118,7 @@ function appendPageLink(pageN){
     if (clickPage == i){
     $a.className = "active";
     }
-    $pagelinkUl.append($li);
+    $ul.append($li);
     $li.append($a);
 
 }};
@@ -137,6 +126,6 @@ function appendPageLink(pageN){
 function removePageLink(pageN){
   for (let i=0; i<pageN; i++){  //remove previous page link.
      let $li = document.querySelector( ".pagination li")
-     $pagelinkUl.removeChild($li);
+     $ul.removeChild($li);
    }
 }
